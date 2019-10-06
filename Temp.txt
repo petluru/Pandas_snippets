@@ -1,0 +1,223 @@
+
+% Filter Warnings
+  import warnings
+warnings.filterwarnings('ignore')
+
+% Code for getting categorical variables of Job Code
+
+"old_emp_category":list(dict( enumerate(old_emp_records["JobCode"].astype('category').cat.categories )).keys()),
+"June_emp_category":list(dict( enumerate(june_empdata['Job Code'].astype('category').cat.categories )).keys()[np.nan]*45,
+"July_emp_category":list(dict( enumerate(july_empdata['JobCode'].astype('category').cat.categories )).keys())+[np.nan]*59
+% OverCommit of Memory
+                         
+echo 1 > /proc/sys/vm/overcommit_memory
+                         
+% Number of Items in the feature
+                         
+dict(enumerate(X_train['CompaRatioChangeOnePerc'].astype('category').cat.categories))
+                         
+% To find out Menomry occupied for a particular DataSet Containing data.
+
+X_train.info(memory_usage = 'deep')
+                         
+% Code for Sorting Columns
+                         
+new_model_data = new_model_data.sort_values(['EmployeeID','ReportMonth'],ascending=[True,True])
+
+% To verify the params to pass in the gridSearch with pipeline
+pipeline.get_params().keys()
+
+% Counting items of unique classes in a series
+                         
+df.value_counts()
+
+% Types of items present in a dictionary without count
+  set(detailsdict2['Sampling_Type'])
+
+% Copying one dataframe column to another [effectively]
+    if (df1.index.intersection(df2.index).empty == True or df1.index.equals(df2.index) = False)
+                         df1[A1] = df2[A2].to_numpy()
+                         or
+       step1: df1.index = df2.index
+       step2: df1[A1] = df2[A2]                     
+                         or
+                         
+    For multiple columns assignment
+    df2 = df2.assign(**{c: df1[c].to_numpy() for c in ('date', 'hour')})
+                
+% Code for getting categorical variables of JobTitle
+                         
+"old_emp_Title_category":list(dict( enumerate(old_emp_records["JobTitleCode"].astype('category').cat.categories )).keys()),
+"June_emp_Title_category":list(dict( enumerate(june_empdata['Job Title 1'].astype('category').cat.categories )).keys())[np.nan]*43,
+"July_emp_Title_category":list(dict( enumerate(july_empdata['JobTitleCode'].astype('category').cat.categories )).keys())+[np.nan]*57
+
+% Code to install packages from jupyter directly
+  
+  !pip install <package>
+                         
+% Code for visualizing the model data.
+
+keras.utils.vis_utils.pydot = pydot
+plot_model(model, show_shapes=True, show_layer_names=True, to_file='model.png')
+from IPython.display import Image
+Image(retina=True, filename='model.png')
+ 
+                         
+% TO FIND METRICS PRESENT IN SKLEARN.METRICS
+SCORERS.keys()
+                         
+% Accessing Previous Record
+    df.shape[0]-1
+
+% Code to Write to Multiple excel_sheets
+
+
+with pd.ExcelWriter('consolidated.xlsx',engine='xlsxwriter') as writer:
+    dataframe1.to_excel(writer, sheet_name='Job_Code',index=False)
+    dataframe2.to_excel(writer, sheet_name='Job_Title',index=False)
+writer.save()
+                         
+% Shuffling data for column wise
+                         
+X_train = X_train.sample(frac = 1,axis=1)
+                         
+% Printing Specific  Columns with condition
+                         
+new_model_data[["ReportMonth","EmployeeID","JobCode","Job_Code_Change"]].loc[new_model_data.Job_Code_Change == "No"]
+                         
+% Function code Apply logic
+                         
+ def Average_age(data):
+    age = data[0]
+    sex = data[1]
+    if pd.isnull(age):
+        if sex == "Male":
+            return 29
+        else:
+            return 25
+    else:
+        return age                        
+                         
+train_data["Age"] = train_data[["Age","Sex"]].apply(Average_age,axis=1)
+                         
+% Code to replace null values 
+
+  empdata.loc[empdata.Ratings.isnull(),'Ratings'] = 0 
+                         
+% Code to replace null values at feature level
+    
+  empdata.loc[empdata.CompaRatio.isnull(),'CompaRatio'] = empdata.groupby(['EmployeeID'])["CompaRatio"].transform(np.mean)
+% Code to find any columns in dataframe which are null
+  X_train.columns[X_train.isna().any()].tolist()
+                         
+% Set Intersection data 
+                         
+emp_intersection = set(list1).intersection(set(list2))
+
+%  Code to get the size of individual columns(Count of Each groupby column element)
+                         
+new_model_data.groupby(['ReportMonth','Attrition']).size()
+                         
+% Code to Display Annotations on the Seaborn countplot Graph  
+                         
+plt.figure(figsize=(7,5))
+ax = sns.countplot(x="JobCodeChange", data=new_model_data,hue="JobCodeChange")
+plt.title(' Frequency of Job Code Changes')
+plt.xlabel('Count')
+plt.ylabel('ChangeStatus')
+
+for p in ax.patches:
+    height = p.get_height()
+    ax.annotate('{}'.format(height),xy=(p.get_x() + p.get_width() / 2, height))
+
+% Code to find dtypes in  all dataframe columns
+  dataframe.dtypes                       
+                         
+% Code to Calculate the unique values for each value of WorkLocation for respective columns of dataframe  
+ empdata.groupby(["WorkLocation"]).nunique()
+                         
+% Code to repeat a group in series multiple times(np.tile)
+  CounttoPercent['GradeState'] =pd.Series(np.tile(s1, 10))
+  
+                         
+% Code to repeat each element of series multiple times                         
+   s = pd.Series(empdata["Grade"],name='Grade').unique()
+   CounttoPercent['Grade'] = s.repeat(3)                      
+   
+% Temporary astype for changing type of column
+empdata["CompaRatioSrvYrsMeanForGrade"] = empdata.astype({'ServiceYears':'int'}).groupby(["Grade","ServiceYears"])
+                         ["CompaRatio"].transform(np.mean)
+                         
+% Code to Display Annotations on Barplot of Axes(matplotlib.pyplot)
+                         
+labels = ['G1', 'G2', 'G3', 'G4', 'G5']
+men_means = [20, 34, 30, 35, 27]
+women_means = [25, 32, 34, 20, 25]
+
+x = np.arange(len(labels))  # the label locations
+width = 0.35  # the width of the bars
+
+fig, ax = plt.subplots()
+rects1 = ax.bar(x - width/2, men_means, width, label='Men')
+rects2 = ax.bar(x + width/2, women_means, width, label='Women')
+
+# Add some text for labels, title and custom x-axis tick labels, etc.
+ax.set_ylabel('Scores')
+ax.set_title('Scores by group and gender')
+ax.set_xticks(x)
+ax.set_xticklabels(labels)
+ax.legend()
+
+
+def autolabel(rects):
+    """Attach a text label above each bar in *rects*, displaying its height."""
+    for rect in rects:
+        height = rect.get_height()
+        ax.annotate('{}'.format(height),
+                    xy=(rect.get_x() + rect.get_width() / 2, height),
+                    xytext=(0, 3),  # 3 points vertical offset
+                    textcoords="offset points",
+                    ha='center', va='bottom')
+
+
+autolabel(rects1)
+autolabel(rects2)
+
+fig.tight_layout()
+
+plt.show()
+                        
+                         
+% Barplot with two bars
+
+ train_W = [1,3,5,7,9,11]
+ train_X = [2,4,6,8,10]
+ plt.bar(x= train_W,height=len(train_W),label="W")
+ plt.bar(x= train_X,height=len(train_X),label="X")
+ plt.legend()
+ plt.show()
+                         
+                         
+                         
+                         
+                                                 
+
+% Code to find confusion matrix for different thresholds                       
+from sklearn.linear_model import LogisticRegression
+from sklearn.metrics import accuracy_score, confusion_matrix, recall_score, roc_auc_score, precision_score
+clf = LogisticRegression(class_weight="balanced")
+clf.fit(X_train, y_train)
+THRESHOLD = [0.05,0.1,0.15,0.2,0.25,0.3,0.35,0.4,0.45,0.5,0.55,0.6,0.65,.7,.75,.8,.85,.9,.95,.99]
+for th in THRESHOLD:
+    print ('\n******** For th = {} ******'.format(th))
+    preds = np.where(clf.predict_proba(X_test)[:,1] > th,0,1)
+    print("0:'No'","1:'Yes'")
+    print(pd.crosstab(y_test.cat.codes, preds,rownames=['Actual'], colnames=['Predicted'], margins=True))
+    #data = pd.concat([data,pd.DataFrame(data=[{"Threshold":th,"Accuracy_Scoreaccuracy_score(y_test.cat.codes, preds), recall_score(y_test.cat.codes, preds),
+     #             precision_score(y_test.cat.codes, preds), roc_auc_score(y_test.cat.codes, preds)], 
+             #index=["Threshold","accuracy", "recall", "precision", "roc_auc_score"]
+      #        columns = ["Threshold","accuracy", "recall", "precision", "roc_auc_score"])])
+     
+#data
+#pd.crosstab(y_test.cat.codes, preds,rownames=['Actual'], colnames=['Predicted'], margins=True)                         
+                         
