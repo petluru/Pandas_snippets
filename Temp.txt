@@ -219,5 +219,23 @@ for th in THRESHOLD:
       #        columns = ["Threshold","accuracy", "recall", "precision", "roc_auc_score"])])
      
 #data
-#pd.crosstab(y_test.cat.codes, preds,rownames=['Actual'], colnames=['Predicted'], margins=True)                         
+#pd.crosstab(y_test.cat.codes, preds,rownames=['Actual'], colnames=['Predicted'], margins=True)     
+
+In order to substract the current row from previous row values for a series we can use : numpy 
+Eg: 
+
+arr1 = np.array([10,20,300,56,234,67])
+arr2 = np.array([10,20,300,56,234,67])
+
+substract succedding records from previous records
+
+result = arr1[1:] - arr2[:-1]
+
+For performing rolling average it is adviced to convert date into datetime field and set it as index.
+And then perform pd.Series().rolling('ndays').mean()
+
+
+
+
+
                          
